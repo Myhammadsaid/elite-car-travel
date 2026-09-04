@@ -192,7 +192,7 @@ export default function Header() {
 					</nav>
 
 					{/* Actions: Social Media Dropdown + Language Switcher */}
-					<div className='flex items-center gap-3 pl-2 border-l border-[var(--color-brand-border)]'>
+					<div className='flex items-center gap-3 pl-6 border-l border-[var(--color-brand-border)]'>
 						<SocialMedia mode='desktop' />
 						<LanguageSwitcher />
 					</div>

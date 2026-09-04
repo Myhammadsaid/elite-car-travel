@@ -7,9 +7,29 @@ const leadSchema = new mongoose.Schema(
 			required: [true, 'Name is required'],
 			trim: true,
 		},
-		contact: {
+		phone: {
 			type: String,
-			required: [true, 'Contact phone or email is required'],
+			required: [true, 'Phone number is required'],
+			trim: true,
+		},
+		email: {
+			type: String,
+			default: '',
+			trim: true,
+		},
+		citizenship: {
+			type: String,
+			default: '',
+			trim: true,
+		},
+		travelDate: {
+			type: String,
+			default: '',
+			trim: true,
+		},
+		participants: {
+			type: String,
+			default: '',
 			trim: true,
 		},
 		serviceType: {

@@ -1,3 +1,4 @@
+// components/admin/LeadsPanel.js (or components/LeadsPanel.js)
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
@@ -13,7 +14,7 @@ export default function LeadsPanel({ token, onAuthError }) {
 		setActionLoading(true)
 		try {
 			const res = await fetch(`${API_BASE}/api/admin/leads`, {
-				headers: { Authorization: `Bearer ${token}` },
+				headers: { Authorization: `Bearer ${jwtToken(token)}` },
 			})
 
 			if (res.status === 401 || res.status === 403) {
@@ -32,6 +33,11 @@ export default function LeadsPanel({ token, onAuthError }) {
 		}
 	}, [token, onAuthError])
 
+	// Helper for bearer token
+	function jwtToken(t) {
+		return t ? t.replace('Bearer ', '') : ''
+	}
+
 	useEffect(() => {
 		fetchLeads()
 	}, [fetchLeads])
@@ -42,7 +48,7 @@ export default function LeadsPanel({ token, onAuthError }) {
 				method: 'PATCH',
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${token}`,
+					Authorization: `Bearer ${jwtToken(token)}`,
 				},
 				body: JSON.stringify({ status: newStatus }),
 			})
@@ -69,7 +75,7 @@ export default function LeadsPanel({ token, onAuthError }) {
 		try {
 			const res = await fetch(`${API_BASE}/api/admin/leads/${leadId}`, {
 				method: 'DELETE',
-				headers: { Authorization: `Bearer ${token}` },
+				headers: { Authorization: `Bearer ${jwtToken(token)}` },
 			})
 
 			if (res.ok) {
@@ -102,6 +108,7 @@ export default function LeadsPanel({ token, onAuthError }) {
 
 	return (
 		<div className='space-y-6'>
+			{/* Top Filter and Refresh Controls */}
 			<div className='flex flex-wrap items-center justify-between gap-3'>
 				<div className='flex flex-wrap gap-2 text-xs font-semibold'>
 					{[
@@ -134,6 +141,7 @@ export default function LeadsPanel({ token, onAuthError }) {
 				</button>
 			</div>
 
+			{/* Leads List */}
 			{filteredLeads.length === 0 ? (
 				<div className='p-12 text-center rounded-2xl bg-[var(--color-brand-surface)] border border-[var(--color-brand-border)] text-neutral-500'>
 					Заявок с данным статусом не найдено.
@@ -143,14 +151,22 @@ export default function LeadsPanel({ token, onAuthError }) {
 					{filteredLeads.map(lead => (
 						<div
 							key={lead._id}
-							className='p-6 sm:p-8 rounded-xl bg-[var(--color-brand-surface)] border border-[var(--color-brand-border)] shadow-2xs space-y-4 hover:border-[var(--color-brand-gold)] transition duration-200'
+							className='p-6 sm:p-8 rounded-xl bg-[var(--color-brand-surface)] border border-[var(--color-brand-border)] shadow-2xs space-y-5 hover:border-[var(--color-brand-gold)] transition duration-200'
 						>
+							{/* Header: Name, Country Badge, Status Pill & Actions */}
 							<div className='flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-neutral-100 pb-4'>
 								<div>
-									<div className='flex items-center gap-3'>
+									<div className='flex flex-wrap items-center gap-3'>
 										<h2 className='font-serif text-2xl font-bold text-[var(--color-brand-dark)]'>
 											{lead.name}
 										</h2>
+
+										{lead.citizenship && (
+											<span className='inline-flex items-center gap-1 text-xs px-2.5 py-0.5 rounded-md bg-neutral-100 text-neutral-700 font-medium border border-neutral-200'>
+												<span>🌍</span> {lead.citizenship}
+											</span>
+										)}
+
 										<span
 											className={`text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full ${
 												lead.status === 'new'
@@ -165,10 +181,15 @@ export default function LeadsPanel({ token, onAuthError }) {
 											{statusTranslations[lead.status] || lead.status}
 										</span>
 									</div>
+
 									<p className='text-xs text-neutral-500 mt-1'>
-										Дата: {new Date(lead.createdAt).toLocaleString('ru-RU')} ·
-										Источник: <span className='font-mono'>{lead.source}</span> (
-										Язык: {lead.locale ? lead.locale.toUpperCase() : 'RU'})
+										Дата создания:{' '}
+										{new Date(lead.createdAt).toLocaleString('ru-RU')} ·
+										Источник:{' '}
+										<span className='font-mono font-medium'>
+											{lead.source || 'website'}
+										</span>{' '}
+										(Язык: {lead.locale ? lead.locale.toUpperCase() : 'RU'})
 									</p>
 								</div>
 
@@ -194,38 +215,77 @@ export default function LeadsPanel({ token, onAuthError }) {
 								</div>
 							</div>
 
-							<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs'>
-								<div className='p-3 rounded-lg bg-[var(--color-brand-cream)]/60'>
-									<span className='font-semibold text-neutral-500 uppercase tracking-wider block mb-1'>
+							{/* Multi-Column Data Details */}
+							<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs'>
+								{/* 1. Contacts (Phone & Email with legacy fallback) */}
+								<div className='p-3.5 rounded-lg bg-[var(--color-brand-cream)]/60 space-y-1'>
+									<span className='font-semibold text-neutral-500 uppercase tracking-wider block'>
 										Контакты
 									</span>
-									<span className='text-sm font-medium text-neutral-900 break-all select-all'>
-										{lead.contact}
-									</span>
+									{lead.phone ? (
+										<p className='font-medium text-neutral-900 select-all'>
+											📞 {lead.phone}
+										</p>
+									) : null}
+									{lead.email ? (
+										<p
+											className='font-medium text-neutral-700 select-all truncate'
+											title={lead.email}
+										>
+											✉️ {lead.email}
+										</p>
+									) : null}
+									{!lead.phone && !lead.email && lead.contact ? (
+										<p className='font-medium text-neutral-900 select-all'>
+											{lead.contact}
+										</p>
+									) : null}
 								</div>
 
-								<div className='p-3 rounded-lg bg-[var(--color-brand-cream)]/60'>
+								{/* 2. Service Requested */}
+								<div className='p-3.5 rounded-lg bg-[var(--color-brand-cream)]/60'>
 									<span className='font-semibold text-neutral-500 uppercase tracking-wider block mb-1'>
-										Услуга / Направление
+										Услуга
 									</span>
 									<span className='text-sm font-medium text-neutral-900'>
-										{lead.serviceType}
+										{lead.serviceType || 'General Inquiry'}
 									</span>
 								</div>
 
-								{(lead.destination || lead.duration) && (
-									<div className='p-3 rounded-lg bg-[var(--color-brand-cream)]/60'>
-										<span className='font-semibold text-neutral-500 uppercase tracking-wider block mb-1'>
-											Маршрут / Длительность
-										</span>
-										<span className='text-sm font-medium text-neutral-900'>
-											{lead.destination || 'Не указан'}{' '}
-											{lead.duration ? `(${lead.duration})` : ''}
-										</span>
-									</div>
-								)}
+								{/* 3. Travel Date & Participants Count */}
+								<div className='p-3.5 rounded-lg bg-[var(--color-brand-cream)]/60'>
+									<span className='font-semibold text-neutral-500 uppercase tracking-wider block mb-1'>
+										Дата и Гости
+									</span>
+									<p className='text-sm font-medium text-neutral-900'>
+										{lead.travelDate
+											? `📅 ${lead.travelDate}`
+											: 'Дата не указана'}
+									</p>
+									{lead.participants && (
+										<p className='text-xs text-neutral-600 mt-0.5'>
+											👥 {lead.participants} чел.
+										</p>
+									)}
+								</div>
+
+								{/* 4. Destination & Duration */}
+								<div className='p-3.5 rounded-lg bg-[var(--color-brand-cream)]/60'>
+									<span className='font-semibold text-neutral-500 uppercase tracking-wider block mb-1'>
+										Маршрут / Срок
+									</span>
+									<p className='text-sm font-medium text-neutral-900'>
+										{lead.destination || 'Не указан'}
+									</p>
+									{lead.duration && (
+										<p className='text-xs text-neutral-600 mt-0.5'>
+											⏳ {lead.duration}
+										</p>
+									)}
+								</div>
 							</div>
 
+							{/* Message Block */}
 							{lead.message && (
 								<div className='p-4 rounded-lg bg-neutral-50 border border-neutral-200/60 text-xs sm:text-sm text-neutral-700 leading-relaxed'>
 									<span className='font-semibold block text-[11px] uppercase tracking-wider text-neutral-500 mb-1'>

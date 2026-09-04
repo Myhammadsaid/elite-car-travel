@@ -10,7 +10,11 @@ router.post('/leads', async (req, res) => {
 	try {
 		const {
 			name,
-			contact,
+			phone,
+			email,
+			citizenship,
+			travelDate,
+			participants,
 			serviceType,
 			destination,
 			duration,
@@ -21,20 +25,27 @@ router.post('/leads', async (req, res) => {
 			hp,
 		} = req.body
 
-		// Honeypot check for bots
+		// Honeypot bot check
 		if (hp) {
 			return res.status(200).json({ success: true, message: 'Lead received' })
 		}
 
-		if (!name || !contact) {
+		if (!name || (!phone && !email)) {
 			return res
 				.status(400)
-				.json({ error: 'Name and contact are required fields.' })
+				.json({
+					error:
+						'Name and at least one contact method (phone or email) are required.',
+				})
 		}
 
 		const newLead = await Lead.create({
 			name,
-			contact,
+			phone: phone || '',
+			email: email || '',
+			citizenship: citizenship || '',
+			travelDate: travelDate || '',
+			participants: participants || '',
 			serviceType:
 				serviceType ||
 				(formType === 'custom' ? 'Custom Itinerary' : 'General Inquiry'),
@@ -59,7 +70,7 @@ router.post('/leads', async (req, res) => {
 	}
 })
 
-// 2. ADMIN AUTH: Log in with password to get token
+// 2. ADMIN AUTH: Log in with password
 router.post('/admin/login', (req, res) => {
 	const { password } = req.body
 	const adminPassword = process.env.ADMIN_PASSWORD || ''
@@ -75,7 +86,7 @@ router.post('/admin/login', (req, res) => {
 	return res.status(200).json({ success: true, token })
 })
 
-// 3. ADMIN: Get all leads (sorted by newest first)
+// 3. ADMIN: Get all leads
 router.get('/admin/leads', authenticateAdmin, async (req, res) => {
 	try {
 		const leads = await Lead.find().sort({ createdAt: -1 })

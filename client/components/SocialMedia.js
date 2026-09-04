@@ -1,3 +1,4 @@
+// components/SocialMedia.js
 'use client'
 
 import { useTranslations } from 'next-intl'
@@ -72,7 +73,7 @@ function getSocialIcon(type = '') {
 	)
 }
 
-export default function SocialMedia({ mode = 'desktop' }) {
+export default function SocialMedia({ mode = 'desktop', className = '' }) {
 	const t = useTranslations('SocialMedia')
 	const [links, setLinks] = useState(DEFAULT_SOCIALS)
 
@@ -92,7 +93,7 @@ export default function SocialMedia({ mode = 'desktop' }) {
 
 	if (mode === 'mobile') {
 		return (
-			<div className='pt-2 pb-1 border-t border-[var(--color-brand-border)]/60'>
+			<div className='pt-2 pb-1'>
 				<span className='text-[10px] uppercase font-semibold tracking-wider text-neutral-400 block mb-2 px-1'>
 					{t('mobileHeader')}
 				</span>
@@ -103,7 +104,7 @@ export default function SocialMedia({ mode = 'desktop' }) {
 							href={link.url}
 							target='_blank'
 							rel='noopener noreferrer'
-							className='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/70 border border-[var(--color-brand-border)] text-xs font-medium text-neutral-700 hover:text-[var(--color-brand-gold-dark)] hover:border-[var(--color-brand-gold)] transition-all'
+							className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--color-brand-cream)] border border-[var(--color-brand-border)] text-xs font-semibold tracking-wider text-neutral-700 hover:text-[var(--color-brand-gold-dark)] hover:bg-[#EDE7D9] transition-all duration-200'
 						>
 							<span className='text-[var(--color-brand-gold)]'>
 								{getSocialIcon(link.icon || link.label)}
@@ -117,33 +118,48 @@ export default function SocialMedia({ mode = 'desktop' }) {
 	}
 
 	return (
-		<div className='relative group py-2'>
-			{/* Trigger Button */}
-			<button
-				type='button'
-				className='flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-medium text-neutral-700 bg-white/60 border border-[var(--color-brand-border)] hover:border-[var(--color-brand-gold)] hover:text-[var(--color-brand-gold-dark)] transition-all duration-200 cursor-pointer shadow-2xs group-hover:bg-white'
-			>
-				<span className='w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse' />
-				<span>{t('button')}</span>
-				<svg
-					className='w-3 h-3 text-neutral-400 transition-transform duration-200 group-hover:rotate-180 group-hover:text-[var(--color-brand-gold)]'
-					fill='none'
-					viewBox='0 0 24 24'
-					stroke='currentColor'
+		<div className={`relative group ${className}`}>
+			{/* Outer Pill Matching LanguageSwitcher Wrapper */}
+			<div className='inline-flex items-center rounded-full border border-[var(--color-brand-border)] bg-[var(--color-brand-cream)] p-1 sm:p-1.5 shadow-xs transition-colors duration-200'>
+				{/* Inner Trigger Button Matching LanguageSwitcher Button Typography & Hover */}
+				<button
+					type='button'
+					className='flex items-center gap-1.5 px-2.5 py-1 text-sm font-semibold tracking-wider text-neutral-700 rounded-full hover:text-[var(--color-brand-gold-dark)] hover:bg-[#EDE7D9] group-hover:bg-[#EDE7D9] transition-all duration-200 cursor-pointer'
 				>
-					<path
+					<svg
+						className='w-4 h-4'
+						viewBox='0 0 24 24'
+						fill='none'
+						stroke='currentColor'
+						strokeWidth='2'
 						strokeLinecap='round'
 						strokeLinejoin='round'
-						strokeWidth={2}
-						d='M19 9l-7 7-7-7'
-					/>
-				</svg>
-			</button>
+					>
+						<circle cx='12' cy='12' r='10' />
+						<line x1='2' y1='12' x2='22' y2='12' />
+						<path d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z' />
+					</svg>
+					<span>{t('button')}</span>
+					<svg
+						className='w-3.5 h-3.5 text-neutral-500 transition-transform duration-200 group-hover:rotate-180 group-hover:text-[var(--color-brand-gold-dark)]'
+						fill='none'
+						viewBox='0 0 24 24'
+						stroke='currentColor'
+					>
+						<path
+							strokeLinecap='round'
+							strokeLinejoin='round'
+							strokeWidth={2}
+							d='M19 9l-7 7-7-7'
+						/>
+					</svg>
+				</button>
+			</div>
 
-			{/* Floating Animated Dropdown Menu */}
-			<div className='absolute right-0 top-full mt-1 invisible opacity-0 translate-y-2 scale-95 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-200 ease-out z-50 origin-top-right'>
-				<div className='w-48 p-2 rounded-2xl bg-[var(--color-brand-cream)]/95 backdrop-blur-md border border-[var(--color-brand-border)] shadow-xl space-y-1 ring-1 ring-black/5'>
-					<div className='px-2.5 py-1 text-[10px] uppercase font-bold tracking-wider text-neutral-400 border-b border-[var(--color-brand-border)]/50 mb-1'>
+			{/* Floating Animated Dropdown Menu Styled to Match Theme */}
+			<div className='absolute right-0 top-full mt-2 invisible opacity-0 translate-y-2 scale-95 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-200 ease-out z-50 origin-top-right'>
+				<div className='w-48 p-2 rounded-2xl bg-[var(--color-brand-cream)] border border-[var(--color-brand-border)] shadow-xl space-y-1 backdrop-blur-md'>
+					<div className='px-3 py-1.5 text-[10px] uppercase font-bold tracking-wider text-neutral-400 border-b border-[var(--color-brand-border)]/60 mb-1'>
 						{t('dropdownHeader')}
 					</div>
 					{links.map(link => (
@@ -152,7 +168,7 @@ export default function SocialMedia({ mode = 'desktop' }) {
 							href={link.url}
 							target='_blank'
 							rel='noopener noreferrer'
-							className='flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-neutral-700 hover:text-[var(--color-brand-gold-dark)] hover:bg-white/80 border border-transparent hover:border-[var(--color-brand-border)]/80 transition-all duration-150 group/item'
+							className='flex items-center justify-between px-3 py-2 rounded-xl text-sm font-semibold tracking-wide text-neutral-700 hover:text-[var(--color-brand-gold-dark)] hover:bg-[#EDE7D9] transition-all duration-150 group/item'
 						>
 							<div className='flex items-center gap-2.5'>
 								<span className='text-neutral-500 group-hover/item:text-[var(--color-brand-gold)] transition-colors'>
@@ -161,7 +177,7 @@ export default function SocialMedia({ mode = 'desktop' }) {
 								<span>{link.label}</span>
 							</div>
 							<svg
-								className='w-3 h-3 text-neutral-300 group-hover/item:text-[var(--color-brand-gold)] opacity-0 group-hover/item:opacity-100 transition-all -translate-x-1 group-hover/item:translate-x-0'
+								className='w-3 h-3 text-neutral-400 group-hover/item:text-[var(--color-brand-gold)] opacity-0 group-hover/item:opacity-100 transition-all -translate-x-1 group-hover/item:translate-x-0'
 								fill='none'
 								viewBox='0 0 24 24'
 								stroke='currentColor'
