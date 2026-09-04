@@ -1,6 +1,7 @@
 import Background from '@/components/Background'
 import ContactForm from '@/components/ContactForm'
 import CtaBanner from '@/components/CtaBanner'
+import PressFeature from '@/components/PressFeature'
 import TagBadge from '@/components/TagBadge'
 import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
@@ -86,7 +87,10 @@ function TravelAgenciesContent() {
 				</div>
 			</section>
 
-			{/* 3. Comprehensive Scope Checklist */}
+			{/* 3. Press Feature: Japanese Guidebook Partnership */}
+			<PressFeature />
+
+			{/* 4. Comprehensive Scope Checklist */}
 			<section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 				<div className='p-8 sm:p-12 lg:p-16 rounded-2xl bg-[var(--color-brand-surface)] border border-[var(--color-brand-border)] shadow-xs space-y-8'>
 					<div className='text-center max-w-2xl mx-auto space-y-3'>
@@ -114,7 +118,7 @@ function TravelAgenciesContent() {
 				</div>
 			</section>
 
-			{/* 4. Inquiry Form Section */}
+			{/* 5. Inquiry Form Section */}
 			<section className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8'>
 				<div className='text-center space-y-3'>
 					<h2 className='font-serif text-3xl sm:text-4xl font-bold text-[var(--color-brand-dark)]'>
@@ -128,7 +132,7 @@ function TravelAgenciesContent() {
 				<ContactForm formType='general' source='travel-agencies' />
 			</section>
 
-			{/* 5. Bottom Banner */}
+			{/* 6. Bottom Banner */}
 			<CtaBanner />
 		</>
 	)
