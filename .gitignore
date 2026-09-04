@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Next.js build
+client/.next/
+client/out/
+client/build/
+dist/
+
+# Environment files
+.env
+.env*.local
+.env.local
+server/.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# OS files
+.DS_Store
+*.pem
