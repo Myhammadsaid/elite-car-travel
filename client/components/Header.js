@@ -1,3 +1,4 @@
+// components/Header.js
 'use client'
 
 import { Link, usePathname } from '@/i18n/routing'
@@ -5,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import LanguageSwitcher from './LanguageSwitcher'
+import SocialMedia from './SocialMedia'
 
 export default function Header() {
 	const pathname = usePathname()
@@ -76,7 +78,7 @@ export default function Header() {
 		<header
 			className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out border-b border-[var(--color-brand-border)] ${
 				isScrolled
-					? 'bg-[var(--color-brand-cream)]/95 shadow-sm'
+					? 'bg-[var(--color-brand-cream)]/95 backdrop-blur-md shadow-sm'
 					: 'bg-[var(--color-brand-cream)]'
 			}`}
 		>
@@ -91,7 +93,7 @@ export default function Header() {
 					onClick={closeMenu}
 					className={`relative flex-shrink-0 transition-all duration-300 ease-in-out hover:scale-105 ${
 						isScrolled
-							? 'w-13 h-13 sm:w-14 sm:h-14'
+							? 'w-12 h-12 sm:w-14 sm:h-14'
 							: 'w-16 h-16 sm:w-20 sm:h-20'
 					}`}
 				>
@@ -105,7 +107,7 @@ export default function Header() {
 					/>
 				</Link>
 
-				{/* Right: Desktop Navigation + Language Switcher */}
+				{/* Center: Desktop Navigation */}
 				<div className='hidden lg:flex items-center gap-8'>
 					<nav className='flex items-center gap-6 text-sm font-medium text-neutral-800'>
 						{navItems.map((item, idx) => {
@@ -146,7 +148,7 @@ export default function Header() {
 
 										{/* Hover Dropdown Menu */}
 										<div className='absolute left-0 top-full -mt-1 invisible opacity-0 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50'>
-											<div className='w-60 p-2 rounded-xl bg-[var(--color-brand-cream)] border border-[var(--color-brand-border)] shadow-xl space-y-1'>
+											<div className='w-60 p-2 rounded-xl bg-[var(--color-brand-cream)] border border-[var(--color-brand-border)] shadow-xl backdrop-blur-md space-y-1'>
 												{item.children.map((child, cIdx) => {
 													const isActive = pathname === child.href
 													return (
@@ -189,7 +191,11 @@ export default function Header() {
 						})}
 					</nav>
 
-					<LanguageSwitcher />
+					{/* Actions: Social Media Dropdown + Language Switcher */}
+					<div className='flex items-center gap-3 pl-2 border-l border-[var(--color-brand-border)]'>
+						<SocialMedia mode='desktop' />
+						<LanguageSwitcher />
+					</div>
 				</div>
 
 				{/* Mobile Actions: Language Switcher + Hamburger */}
@@ -229,10 +235,10 @@ export default function Header() {
 			{/* Smooth Animated Mobile Menu */}
 			<div
 				className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out bg-[var(--color-brand-cream)] border-b border-[var(--color-brand-border)] shadow-xl ${
-					isOpen ? 'max-h-[600px] opacity-100 py-6' : 'max-h-0 opacity-0 py-0'
+					isOpen ? 'max-h-[700px] opacity-100 py-6' : 'max-h-0 opacity-0 py-0'
 				}`}
 			>
-				<div className='px-6 space-y-3'>
+				<div className='px-6 space-y-4'>
 					{navItems.map((item, idx) => {
 						if (item.children) {
 							const isExpanded = !!mobileExpanded[idx]
@@ -247,7 +253,11 @@ export default function Header() {
 									>
 										<span>{item.label}</span>
 										<svg
-											className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180 text-[var(--color-brand-gold)]' : 'text-neutral-500'}`}
+											className={`w-4 h-4 transition-transform duration-200 ${
+												isExpanded
+													? 'rotate-180 text-[var(--color-brand-gold)]'
+													: 'text-neutral-500'
+											}`}
 											fill='none'
 											viewBox='0 0 24 24'
 											stroke='currentColor'
@@ -298,7 +308,10 @@ export default function Header() {
 						)
 					})}
 
-					<div className='pt-3'>
+					{/* Integrated Mobile Social Links */}
+					<SocialMedia mode='mobile' />
+
+					<div className='pt-2'>
 						<Link
 							href='/custom-travel'
 							onClick={closeMenu}

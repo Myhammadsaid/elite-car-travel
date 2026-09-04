@@ -317,5 +317,10 @@
 		"hoursValue": "24時間・年中無休（緊急サポート対応）",
 		"formHeading": "お問い合わせフォーム",
 		"formSubheading": "ご質問・ご相談事項をご記入ください。担当者より迅速にご回答いたします。"
+	},
+	"SocialMedia": {
+		"button": "SNS",
+		"dropdownHeader": "公式SNSアカウント",
+		"mobileHeader": "ソーシャルメディア"
 	}
 }

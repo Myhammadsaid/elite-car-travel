@@ -1,6 +1,5 @@
 'use client'
 
-import LanguageSwitcher from '@/components/LanguageSwitcher'
 import LeadsPanel from '@/components/admin/LeadsPanel'
 import SocialMediaPanel from '@/components/admin/SocialMediaPanel'
 import { useCallback, useEffect, useState } from 'react'
@@ -56,10 +55,6 @@ export default function AdminPage() {
 		return (
 			<div className='min-h-[70vh] flex items-center justify-center px-4 py-16'>
 				<div className='w-full max-w-md space-y-6'>
-					<div className='flex justify-center'>
-						<LanguageSwitcher />
-					</div>
-
 					<div className='p-8 sm:p-10 rounded-2xl bg-[var(--color-brand-surface)] border border-[var(--color-brand-border)] shadow-md space-y-6'>
 						<div className='text-center space-y-2'>
 							<span className='text-xs uppercase tracking-[0.2em] font-semibold text-[var(--color-brand-gold-dark)]'>
@@ -125,15 +120,12 @@ export default function AdminPage() {
 					</h1>
 				</div>
 
-				<div className='flex items-center gap-3'>
-					<LanguageSwitcher />
-					<button
-						onClick={handleLogout}
-						className='px-4 py-2 rounded-md bg-neutral-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-neutral-800 transition cursor-pointer'
-					>
-						Выйти
-					</button>
-				</div>
+				<button
+					onClick={handleLogout}
+					className='px-4 py-2 rounded-md bg-neutral-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-neutral-800 transition cursor-pointer'
+				>
+					Выйти
+				</button>
 			</div>
 
 			{/* Top-level section tabs */}

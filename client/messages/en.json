@@ -313,5 +313,10 @@
 		"hoursValue": "24/7 — Round-the-clock operations & support",
 		"formHeading": "Send Us an Inquiry",
 		"formSubheading": "Leave your message below and our duty coordinator will respond within 30 minutes."
+	},
+	"SocialMedia": {
+		"button": "Socials",
+		"dropdownHeader": "Connect with us",
+		"mobileHeader": "Social Networks"
 	}
 }

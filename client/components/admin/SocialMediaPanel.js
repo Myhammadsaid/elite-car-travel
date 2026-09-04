@@ -52,6 +52,12 @@ export default function SocialMediaPanel({ token, onAuthError }) {
 			const data = await res.json()
 			if (data.success) {
 				setLinks(data.links || [])
+				if (
+					localStorage.getItem('socialLinks') !==
+					JSON.stringify(data.links || [])
+				) {
+					localStorage.setItem('socialLinks', JSON.stringify(data.links || []))
+				}
 			}
 		} catch (err) {
 			console.error('Ошибка загрузки соцсетей:', err)
