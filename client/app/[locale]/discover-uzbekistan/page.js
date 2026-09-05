@@ -84,17 +84,20 @@ function DiscoverUzbekistanContent() {
 	return (
 		<>
 			{/* 1. Header */}
-			<section className='max-w-7xl mx-auto pt-16 md:pt-24 px-4 sm:px-6 lg:px-8 text-center space-y-6'>
-				<Background src='/tashkent.jpg' alt='Tashkent Silk Road Landscape' />
-				<TagBadge tag={t('badge')} />
-
-				<h1 className='text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-[var(--color-brand-dark)] max-w-4xl mx-auto leading-tight'>
-					{t('title')}
-				</h1>
-				<p className='text-neutral-600 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed'>
-					{t('subtitle')}
-				</p>
-				<div className='gold-divider max-w-xs mx-auto pt-4' />
+			<section className='relative w-full py-20 md:py-32 px-4 sm:px-6 lg:px-8 text-center overflow-hidden'>
+				<Background
+					src='/tashkent/spot-in-tashkent_5.jpg'
+					alt='Tashkent Silk Road Landscape'
+				/>
+				<div className='relative z-10 max-w-4xl mx-auto space-y-6 flex flex-col items-center'>
+					<TagBadge tag={t('badge')} />
+					<h1 className='text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white max-w-4xl mx-auto leading-tight'>
+						{t('title')}
+					</h1>
+					<p className='text-white text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed'>
+						{t('subtitle')}
+					</p>
+				</div>
 			</section>
 
 			{/* 2. Intro Showcase */}

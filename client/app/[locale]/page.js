@@ -62,10 +62,22 @@ function HomeContent() {
 	]
 
 	const cities = [
-		{ name: t('cityTashkent'), desc: t('cityTashkentDesc') },
-		{ name: t('citySamarkand'), desc: t('citySamarkandDesc') },
-		{ name: t('cityBukhara'), desc: t('cityBukharaDesc') },
-		{ name: t('cityKhiva'), desc: t('cityKhivaDesc') },
+		{
+			name: t('cityTashkent'),
+			desc: t('cityTashkentDesc'),
+		},
+		{
+			name: t('citySamarkand'),
+			desc: t('citySamarkandDesc'),
+		},
+		{
+			name: t('cityBukhara'),
+			desc: t('cityBukharaDesc'),
+		},
+		{
+			name: t('cityKhiva'),
+			desc: t('cityKhivaDesc'),
+		},
 	]
 
 	return (
@@ -73,8 +85,8 @@ function HomeContent() {
 			{/* 1. OPTIMIZED HERO SECTION */}
 			<section className='relative pt-16 md:pt-24 pb-24 md:pb-32 overflow-hidden transform-gpu'>
 				<Background
-					src='/uzbekistan.webp'
-					alt='Uzbekistan Silk Road Landscape'
+					src='/samarkand/spot-in-samarkand_1.jpg'
+					alt='Samarkand square with Registan madrasahs in the background'
 				/>
 
 				{/* Hero Content */}
@@ -83,12 +95,12 @@ function HomeContent() {
 						<TagBadge tag={t('badge')} />
 
 						{/* Main Tagline */}
-						<h1 className='text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-[var(--color-brand-dark)] tracking-tight leading-[1.15]'>
+						<h1 className='text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-white tracking-tight leading-[1.15]'>
 							{t('title')}
 						</h1>
 
 						{/* Description */}
-						<p className='text-base sm:text-xl text-neutral-700 font-normal leading-relaxed max-w-2xl mx-auto'>
+						<p className='text-base sm:text-xl text-neutral-700 font-normal leading-relaxed max-w-2xl mx-auto text-white'>
 							{t('description')}
 						</p>
 
@@ -109,9 +121,9 @@ function HomeContent() {
 						</div>
 
 						{/* Key Metrics Stats Bar */}
-						<div className='pt-12 grid grid-cols-2 md:grid-cols-4 gap-6 mt-12'>
+						<div className='grid grid-cols-2 md:grid-cols-4 gap-10 mt-12 **:text-white bg-[var(--color-brand-gold-dark)] p-10'>
 							<div className='text-center space-y-1'>
-								<span className='font-serif text-3xl sm:text-4xl font-bold text-[var(--color-brand-dark)]'>
+								<span className='font-serif text-3xl sm:text-4xl font-bold'>
 									8+
 								</span>
 								<p className='text-xs text-neutral-600 uppercase tracking-wider font-medium'>
@@ -119,7 +131,7 @@ function HomeContent() {
 								</p>
 							</div>
 							<div className='text-center space-y-1'>
-								<span className='font-serif text-3xl sm:text-4xl font-bold text-[var(--color-brand-dark)]'>
+								<span className='font-serif text-3xl sm:text-4xl font-bold'>
 									5
 								</span>
 								<p className='text-xs text-neutral-600 uppercase tracking-wider font-medium'>
@@ -127,7 +139,7 @@ function HomeContent() {
 								</p>
 							</div>
 							<div className='text-center space-y-1'>
-								<span className='font-serif text-3xl sm:text-4xl font-bold text-[var(--color-brand-dark)]'>
+								<span className='font-serif text-3xl sm:text-4xl font-bold'>
 									24/7
 								</span>
 								<p className='text-xs text-neutral-600 uppercase tracking-wider font-medium'>
@@ -135,7 +147,7 @@ function HomeContent() {
 								</p>
 							</div>
 							<div className='text-center space-y-1'>
-								<span className='font-serif text-3xl sm:text-4xl font-bold text-[var(--color-brand-dark)]'>
+								<span className='font-serif text-3xl sm:text-4xl font-bold'>
 									100%
 								</span>
 								<p className='text-xs text-neutral-600 uppercase tracking-wider font-medium'>
