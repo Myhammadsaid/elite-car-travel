@@ -11,7 +11,7 @@ export default function Background({ src, alt }) {
 					sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw'
 					className='object-cover object-center transform-gpu'
 					priority
-					quality={60}
+					quality={100}
 				/>
 			</div>
 
@@ -20,7 +20,7 @@ export default function Background({ src, alt }) {
 				className='absolute inset-0 -z-10 pointer-events-none'
 				style={{
 					background:
-						'linear-gradient(180deg, rgba(250, 248, 243, 0.78) 0%, rgba(250, 248, 243, 0.92) 90%, rgba(250, 248, 243, 1) 100%)',
+						'linear-gradient(180deg, rgba(250, 248, 243, 0.10) 0%, rgba(250, 248, 243, 0.92) 90%, rgba(250, 248, 243, 1) 100%)',
 				}}
 			/>
 		</>

@@ -1,10 +1,10 @@
+import Background from '@/components/Background'
 import CtaBanner from '@/components/CtaBanner'
 import ServiceCard from '@/components/ServiceCard'
 import TagBadge from '@/components/TagBadge'
 import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
-import Image from 'next/image'
 
 export default async function HomePage({ params }) {
 	const { locale } = await params
@@ -72,26 +72,9 @@ function HomeContent() {
 		<>
 			{/* 1. OPTIMIZED HERO SECTION */}
 			<section className='relative pt-16 md:pt-24 pb-24 md:pb-32 overflow-hidden transform-gpu'>
-				{/* Hardware-Accelerated Background Image */}
-				<div className='absolute inset-0 -z-20 pointer-events-none'>
-					<Image
-						src='/uzbekistan.webp'
-						alt='Uzbekistan Silk Road Landscape'
-						fill
-						sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw'
-						className='object-cover object-center transform-gpu'
-						priority
-						quality={60}
-					/>
-				</div>
-
-				{/* Lightweight Pure CSS Gradient (Zero GPU Compositing Lag) */}
-				<div
-					className='absolute inset-0 -z-10 pointer-events-none'
-					style={{
-						background:
-							'linear-gradient(180deg, rgba(250, 248, 243, 0.78) 0%, rgba(250, 248, 243, 0.92) 90%, rgba(250, 248, 243, 1) 100%)',
-					}}
+				<Background
+					src='/uzbekistan.webp'
+					alt='Uzbekistan Silk Road Landscape'
 				/>
 
 				{/* Hero Content */}
@@ -126,7 +109,7 @@ function HomeContent() {
 						</div>
 
 						{/* Key Metrics Stats Bar */}
-						<div className='pt-12 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-[var(--color-brand-border)]/80 mt-12'>
+						<div className='pt-12 grid grid-cols-2 md:grid-cols-4 gap-6 mt-12'>
 							<div className='text-center space-y-1'>
 								<span className='font-serif text-3xl sm:text-4xl font-bold text-[var(--color-brand-dark)]'>
 									8+

@@ -76,9 +76,9 @@ export default function Header() {
 
 	return (
 		<header
-			className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out border-b border-[var(--color-brand-border)] ${
+			className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out ${
 				isScrolled
-					? 'bg-[var(--color-brand-cream)]/95 backdrop-blur-md shadow-sm'
+					? 'bg-[var(--color-brand-cream)]/95 shadow-sm'
 					: 'bg-[var(--color-brand-cream)]'
 			}`}
 		>
@@ -148,7 +148,7 @@ export default function Header() {
 
 										{/* Hover Dropdown Menu */}
 										<div className='absolute left-0 top-full -mt-1 invisible opacity-0 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50'>
-											<div className='w-60 p-2 rounded-xl bg-[var(--color-brand-cream)] border border-[var(--color-brand-border)] shadow-xl backdrop-blur-md space-y-1'>
+											<div className='w-60 p-2 rounded-xl bg-[var(--color-brand-cream)] border border-[var(--color-brand-border)] shadow-xl space-y-1'>
 												{item.children.map((child, cIdx) => {
 													const isActive = pathname === child.href
 													return (
@@ -321,6 +321,38 @@ export default function Header() {
 						</Link>
 					</div>
 				</div>
+			</div>
+
+			{/* Sharp Pointed Oriental Arch Bottom Border (Dark Espresso Brown & Sharp Lancet Geometry) */}
+			<div className='w-full mx-auto h-[4px] overflow-hidden pointer-events-none'>
+				<svg
+					className='w-full h-full'
+					viewBox='0 0 100% 4'
+					fill='none'
+					xmlns='http://www.w3.org/2000/svg'
+				>
+					<defs>
+						<pattern
+							id='sharp-arch-border'
+							width='16'
+							height='4'
+							patternUnits='userSpaceOnUse'
+						>
+							{/* Sharp pointed lancet arch outline with dark espresso brown tone */}
+							<path
+								d='M0,0.5 L2,0.8 Q6,3.6 8,4.2 Q10,3.6 14,0.8 L16,0.5'
+								fill='none'
+								stroke='#2B1810'
+								strokeWidth='1.2'
+								strokeLinecap='round'
+								strokeLinejoin='miter'
+							/>
+							{/* Crisp pointed diamond accent */}
+							<polygon points='8,1.2 9.3,2.2 8,3.2 6.7,2.2' fill='#2B1810' />
+						</pattern>
+					</defs>
+					<rect width='100%' height='4' fill='url(#sharp-arch-border)' />
+				</svg>
 			</div>
 		</header>
 	)
