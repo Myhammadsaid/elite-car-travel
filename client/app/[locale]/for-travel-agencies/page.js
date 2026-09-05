@@ -4,7 +4,17 @@ import CtaBanner from '@/components/CtaBanner'
 import PressFeature from '@/components/PressFeature'
 import TagBadge from '@/components/TagBadge'
 import { useTranslations } from 'next-intl'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+
+export async function generateMetadata({ params }) {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'TravelAgenciesPage' })
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+	}
+}
 
 export default async function ForTravelAgenciesPage({ params }) {
 	const { locale } = await params

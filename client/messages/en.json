@@ -131,6 +131,8 @@
 		"button": "Create Your Custom Tour"
 	},
 	"AboutPage": {
+		"metaTitle": "Our Story Since 2016",
+		"metaDescription": "Meet Elite Car Travel, Uzbekistan's tour operator and DMC since 2016. Discover our story, values, and private touring fleet across Samarkand, Bukhara & Khiva.",
 		"badge": "About Us",
 		"title": "Crafting Extraordinary Journeys Across Uzbekistan",
 		"subtitle": "Since 2016, we have introduced travelers from across the globe to the timeless history, vibrant culture, and heartfelt hospitality of Central Asia.",
@@ -151,6 +153,8 @@
 		"fleetDesc": "For effortless journeys across Uzbekistan's historic oases, we provide premium executive sedans, rugged 4x4 SUVs for mountain and desert expeditions, spacious minivans, and full-size touring coaches accommodating up to 50 guests."
 	},
 	"ServicesPage": {
+		"metaTitle": "Tours & Travel Services",
+		"metaDescription": "Private tours, Silk Road packages, and inbound travel services across Uzbekistan. Samarkand, Bukhara & Khiva itineraries, transport, and expert guides.",
 		"badge": "Tours & Services",
 		"title": "Comprehensive Travel Planning & Inbound Tourism",
 		"subtitle": "Bespoke private tours to Samarkand, Bukhara & Khiva, classic Silk Road packages, culinary discoveries, and cross-border Central Asia expeditions.",
@@ -181,6 +185,8 @@
 		"section3F5": "Full border-crossing assistance and unified logistics"
 	},
 	"TravelAgenciesPage": {
+		"metaTitle": "Uzbekistan DMC for Travel Agencies",
+		"metaDescription": "Elite Car Travel is a trusted DMC for international travel agencies and tour operators, offering ground handling across Uzbekistan and Central Asia.",
 		"badge": "For Travel Agencies & DMCs",
 		"title": "Your Trusted DMC & Ground Partner in Uzbekistan",
 		"tagline": "One Partner. One Point of Contact. Complete Inbound DMC Support.",
@@ -210,6 +216,8 @@
 		"formSubtitle": "Submit your inquiry to receive our DMC tariff sheet, company portfolio, and sample tour itineraries."
 	},
 	"CorporatePage": {
+		"metaTitle": "Corporate & MICE Travel Uzbekistan",
+		"metaDescription": "Corporate travel, incentive tours, and MICE logistics in Uzbekistan. VIP delegation transport, conference support, and executive mobility since 2016.",
 		"badge": "Corporate & MICE Travel",
 		"title": "Corporate Retreats, Incentive Tours & Delegation Services",
 		"subtitle": "Designing inspiring incentive journeys, team retreats, and delivering executive mobility for business delegations in Uzbekistan.",
@@ -233,6 +241,8 @@
 		"formSubtitle": "Fill out the form below to receive a customized MICE itinerary and corporate agreement terms."
 	},
 	"WhyUsPage": {
+		"metaTitle": "Why Choose Elite Car Travel",
+		"metaDescription": "See why international travelers and agencies choose Elite Car Travel: local expertise since 2016, a private fleet, and flexible tailor-made itineraries.",
 		"badge": "Why Elite Car Travel",
 		"title": "5 Pillars of an Unforgettable Journey",
 		"subtitle": "Since 2016, setting the gold standard for hospitality, travel comfort, and reliability across Uzbekistan.",
@@ -257,6 +267,8 @@
 		"std4": "Impersonal or unhelpful customer service"
 	},
 	"DiscoverUzbekistanPage": {
+		"metaTitle": "Uzbekistan Travel Guide",
+		"metaDescription": "Explore Samarkand, Bukhara, Khiva & Tashkent with our Uzbekistan travel guide: Silk Road history, top cities, cuisine, and cultural traditions to experience.",
 		"badge": "Uzbekistan Destination Guide",
 		"title": "The Historic Heart of the Silk Road",
 		"subtitle": "Explore Samarkand, Bukhara & Khiva: turquoise Timurid domes, ancient desert citadels, vibrant bazaar culture, and legendary hospitality.",
@@ -292,6 +304,8 @@
 		"cultureCraftsDesc": "Generations of master artisans continue the traditions of intricate copper embossing, gold embroidery, hand-knotted silk carpets, and carved elm columns."
 	},
 	"CustomTravelPage": {
+		"metaTitle": "Custom Uzbekistan Tour Planner",
+		"metaDescription": "Design your own private Uzbekistan tour with Elite Car Travel. Choose your pace, interests, and dates for a tailor-made Samarkand, Bukhara & Khiva itinerary.",
 		"badge": "Bespoke Travel",
 		"title": "Your Private Uzbekistan Tour, Crafted Your Way.",
 		"tagline": "Your Trip. Your Way.",
@@ -306,6 +320,8 @@
 		"formSubheading": "Submit your travel preferences below and our team will craft a customized itinerary proposal for you."
 	},
 	"ContactPage": {
+		"metaTitle": "Contact Us & Get a Quote",
+		"metaDescription": "Contact Elite Car Travel for private Uzbekistan tours, custom itineraries, or B2B DMC cooperation. Our travel specialists reply within 30 minutes.",
 		"badge": "Get in Touch",
 		"title": "Contact Elite Car Travel",
 		"subtitle": "Reach out directly for tour inquiries, custom travel planning, or B2B destination management cooperation.",

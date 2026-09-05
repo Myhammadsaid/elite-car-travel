@@ -2,7 +2,20 @@ import Background from '@/components/Background'
 import CtaBanner from '@/components/CtaBanner'
 import TagBadge from '@/components/TagBadge'
 import { useTranslations } from 'next-intl'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+
+export async function generateMetadata({ params }) {
+	const { locale } = await params
+	const t = await getTranslations({
+		locale,
+		namespace: 'DiscoverUzbekistanPage',
+	})
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+	}
+}
 
 export default async function DiscoverUzbekistanPage({ params }) {
 	const { locale } = await params

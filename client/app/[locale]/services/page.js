@@ -3,7 +3,17 @@ import CtaBanner from '@/components/CtaBanner'
 import TagBadge from '@/components/TagBadge'
 import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+
+export async function generateMetadata({ params }) {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'ServicesPage' })
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+	}
+}
 
 export default async function ServicesPage({ params }) {
 	const { locale } = await params
