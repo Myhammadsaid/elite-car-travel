@@ -101,7 +101,7 @@ function HomeContent() {
 
 						{/* Main Tagline */}
 						<h1 className='text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-[var(--color-brand-dark)] tracking-tight leading-[1.15]'>
-							{t('tagline')}
+							{t('title')}
 						</h1>
 
 						{/* Description */}
