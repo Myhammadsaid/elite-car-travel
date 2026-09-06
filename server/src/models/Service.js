@@ -26,6 +26,10 @@ const ServiceSchema = new mongoose.Schema(
 		},
 		desc: LocalizedString,
 		features: [LocalizedString],
+		price: {
+			type: Number,
+			default: 0,
+		},
 	},
 	{ timestamps: true },
 )

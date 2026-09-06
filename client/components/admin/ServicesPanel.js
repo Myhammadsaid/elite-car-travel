@@ -71,6 +71,7 @@ export default function ServicesPanel({ token, onAuthError }) {
 			badge: { ...initialLocalized, ...service.badge },
 			title: { ...initialLocalized, ...service.title },
 			desc: { ...initialLocalized, ...service.desc },
+			price: service.price || 0,
 			features: service.features?.length
 				? service.features.map(f => ({ ...initialLocalized, ...f }))
 				: [{ ...initialLocalized }],
@@ -243,6 +244,20 @@ export default function ServicesPanel({ token, onAuthError }) {
 								}
 								placeholder='например: Классические туры по Шелковому пути'
 								className='w-full p-2.5 border rounded-md bg-white text-sm border-neutral-300 focus:border-[var(--color-brand-gold)] focus:outline-none'
+							/>
+						</div>
+
+						<div>
+							<label className='block text-xs font-semibold text-neutral-600 mb-1'>
+								Цена ({activeTab.toUpperCase()})
+							</label>
+							<input
+								type='number'
+								value={formData.price || ''}
+								onChange={e =>
+									setFormData({ ...formData, price: Number(e.target.value) })
+								}
+								className='w-full p-2.5 border rounded-md text-sm border-neutral-300 focus:border-[var(--color-brand-gold)] focus:outline-none'
 							/>
 						</div>
 

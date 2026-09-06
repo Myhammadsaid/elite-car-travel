@@ -82,6 +82,13 @@ export default async function ServicesPage({ params }) {
 									<p className='text-neutral-600 text-sm sm:text-base leading-relaxed'>
 										{desc}
 									</p>
+									<h4 className='text-md font-serif font-bold text-[var(--color-brand-gold)] mt-2'>
+										{svc.price > 0 && (
+											<span>
+												{t('priceLabel')}: {svc.price} USD
+											</span>
+										)}
+									</h4>
 									<div className='pt-4'>
 										<Link
 											href='/custom-travel'
