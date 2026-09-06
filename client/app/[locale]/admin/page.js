@@ -1,6 +1,7 @@
 'use client'
 
 import LeadsPanel from '@/components/admin/LeadsPanel'
+import ServicesPanel from '@/components/admin/ServicesPanel'
 import SocialMediaPanel from '@/components/admin/SocialMediaPanel'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -105,6 +106,7 @@ export default function AdminPage() {
 
 	const tabs = [
 		{ key: 'leads', label: 'Заявки' },
+		{ key: 'services', label: 'Услуги & Туры' },
 		{ key: 'social', label: 'Соцсети' },
 	]
 
@@ -147,6 +149,9 @@ export default function AdminPage() {
 
 			{activeTab === 'leads' && (
 				<LeadsPanel token={token} onAuthError={handleLogout} />
+			)}
+			{activeTab === 'services' && (
+				<ServicesPanel token={token} onAuthError={handleLogout} />
 			)}
 			{activeTab === 'social' && (
 				<SocialMediaPanel token={token} onAuthError={handleLogout} />

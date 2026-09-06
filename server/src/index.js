@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import express from 'express'
 import { connectDB } from './config/db.js'
 import leadRoutes from './routes/leads.js'
+import serviceRoutes from './routes/service.js'
 import socialRoutes from './routes/social.js'
 
 dotenv.config()
@@ -21,6 +22,7 @@ app.use(express.json())
 // Routes
 app.use('/api', leadRoutes)
 app.use('/api', socialRoutes)
+app.use('/api/services', serviceRoutes)
 
 // Health check
 app.get('/api/health', (req, res) => {
