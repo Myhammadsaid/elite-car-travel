@@ -63,6 +63,7 @@ export default function Header() {
 				{ label: t('customTravel'), href: '/custom-travel' },
 			],
 		},
+		{ href: '/gallery', label: t('gallery') },
 		{
 			label: t('contact'),
 			href: '/contact',

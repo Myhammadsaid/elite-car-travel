@@ -71,6 +71,7 @@
 		"home": "Home",
 		"about": "About Us",
 		"services": "Tours & Services",
+		"gallery": "Landscapes Gallery",
 		"travelAgencies": "For Travel Agencies (DMC)",
 		"corporate": "Corporate & MICE",
 		"whyUs": "Why Us",
@@ -150,6 +151,13 @@
 		"fleetBadge": "Our Capabilities",
 		"fleetTitle": "Modern Private Touring Fleet",
 		"fleetDesc": "For effortless journeys across Uzbekistan's historic oases, we provide premium executive sedans, rugged 4x4 SUVs for mountain and desert expeditions, spacious minivans, and full-size touring coaches accommodating up to 50 guests."
+	},
+	"GalleryPage": {
+		"metaTitle": "Uzbekistan Landscapes & Heritage Gallery | Elite Car Travel",
+		"metaDescription": "Explore vertical photographic captures across Uzbekistan — Tashkent, Samarkand, Bukhara, Khiva, Chimgan Mountains, and the Kyzylkum Desert.",
+		"badge": "Visual Journey",
+		"title": "Landscapes of Uzbekistan",
+		"subtitle": "Swipe through curated vertical perspectives capturing the architecture, high-altitude ranges, and Silk Road horizons."
 	},
 	"ServicesPage": {
 		"metaTitle": "Tours & Travel Services",
