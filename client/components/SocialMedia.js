@@ -4,16 +4,7 @@
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
-const DEFAULT_SOCIALS = [
-	{
-		_id: '1',
-		label: 'Instagram',
-		url: 'https://instagram.com',
-		icon: 'instagram',
-	},
-	{ _id: '2', label: 'Telegram', url: 'https://t.me', icon: 'telegram' },
-	{ _id: '3', label: 'WhatsApp', url: 'https://wa.me', icon: 'whatsapp' },
-]
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || ''
 
 function getSocialIcon(type = '') {
 	const normalized = type.toLowerCase()
@@ -75,21 +66,34 @@ function getSocialIcon(type = '') {
 
 export default function SocialMedia({ mode = 'desktop', className = '' }) {
 	const t = useTranslations('SocialMedia')
-	const [links, setLinks] = useState(DEFAULT_SOCIALS)
+	const [links, setLinks] = useState([])
 
 	useEffect(() => {
-		try {
-			const stored = localStorage.getItem('socialLinks')
-			if (stored) {
-				const parsed = JSON.parse(stored)
-				if (Array.isArray(parsed) && parsed.length > 0) {
-					setLinks(parsed)
+		let cancelled = false
+
+		async function fetchLinks() {
+			try {
+				const res = await fetch(`${API_BASE}/api/social`)
+				const data = await res.json()
+				if (!cancelled && data.success) {
+					setLinks(data.links || [])
 				}
+			} catch (err) {
+				console.error('Ошибка загрузки соцсетей:', err)
 			}
-		} catch {
-			// Fallback to DEFAULT_SOCIALS
+		}
+
+		fetchLinks()
+		return () => {
+			cancelled = true
 		}
 	}, [])
+
+	// Nothing to show yet (still loading, fetch failed, or no active links) —
+	// render nothing rather than fake placeholder links.
+	if (links.length === 0) {
+		return null
+	}
 
 	if (mode === 'mobile') {
 		return (
@@ -107,7 +111,7 @@ export default function SocialMedia({ mode = 'desktop', className = '' }) {
 							className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--color-brand-cream)] border border-[var(--color-brand-border)] text-xs font-semibold tracking-wider text-neutral-700 hover:text-[var(--color-brand-gold-dark)] hover:bg-[#EDE7D9] transition-all duration-200'
 						>
 							<span className='text-[var(--color-brand-gold)]'>
-								{getSocialIcon(link.icon || link.label)}
+								{getSocialIcon(link.platform || link.label)}
 							</span>
 							<span>{link.label}</span>
 						</a>
@@ -172,7 +176,7 @@ export default function SocialMedia({ mode = 'desktop', className = '' }) {
 						>
 							<div className='flex items-center gap-2.5'>
 								<span className='text-neutral-500 group-hover/item:text-[var(--color-brand-gold)] transition-colors'>
-									{getSocialIcon(link.icon || link.label)}
+									{getSocialIcon(link.platform || link.label)}
 								</span>
 								<span>{link.label}</span>
 							</div>
