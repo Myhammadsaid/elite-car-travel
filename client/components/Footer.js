@@ -163,11 +163,27 @@ export default function Footer() {
 					</div>
 				</div>
 
-				{/* Bottom Bar */}
 				<div className='mt-12 pt-8 border-t border-neutral-800/80 flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-500 gap-4'>
-					<p>
-						© {currentYear} Elite Car Group. {t('rights')}
-					</p>
+					<div className='flex flex-col sm:flex-row items-center gap-x-3 gap-y-1.5'>
+						<p>
+							© {currentYear} Elite Car Group. {t('rights')}
+						</p>
+						<span
+							className='hidden sm:inline text-neutral-700'
+							aria-hidden='true'
+						>
+							|
+						</span>
+						<a
+							href='https://webtik.uz'
+							target='_blank'
+							rel='noopener'
+							className='hover:text-white transition-colors'
+						>
+							Made by{' '}
+							<span className='font-medium text-neutral-400'>WEBTIK</span>
+						</a>
+					</div>
 					<p className='text-[11px] tracking-widest uppercase text-neutral-400'>
 						Tashkent · Samarkand · Bukhara · Khiva
 					</p>
